@@ -45,7 +45,18 @@ export const moviesAverageOfDirector = (
 };
 
 // Exercise 4:  Alphabetic order by title
-// const orderAlphabetically= (array) => {}
+export const orderAlphabetically = (array: Movie[]): string[] => {
+	let result: Movie[];
+
+	result = [...array].sort((a, b) => a.title.localeCompare(b.title, 'ca'));
+
+	console.log(
+		'EXERCISE 1 ->',
+		result.slice(0, 20).map((m) => m.title)
+	);
+
+	return result.slice(0, 20).map((m) => m.title);
+};
 
 // Exercise 5: Order by year, ascending
 // const orderByYear= () => {}
