@@ -6,9 +6,9 @@ import {
 	moviesAverageOfDirector,
 	orderAlphabetically,
 	orderByYear,
-	moviesAverageByCategory
-	// hoursToMinutes,
-	// bestFilmOfYear
+	moviesAverageByCategory,
+	hoursToMinutes,
+	bestFilmOfYear
 } from '../src/films';
 
 // Exercise 1
@@ -723,89 +723,116 @@ describe('Function "moviesAverageByCategory"', () => {
 });
 
 // // Exercise 7
-// describe('Function "hoursToMinutes"', () => {
-// 	it('should be declared', () => {
-// 		expect(typeof hoursToMinutes).toBe('function');
-// 	});
+describe('Function "hoursToMinutes"', () => {
+	it('should be declared', () => {
+		expect(typeof hoursToMinutes).toBe('function');
+	});
 
-// 	it('should return an array', () => {
-// 		expect(hoursToMinutes(movies) instanceof Array).toBe(true);
-// 	});
+	it('should return an array', () => {
+		expect(hoursToMinutes(movies) instanceof Array).toBe(true);
+	});
 
-// 	it('should return a new array, not update the original one', () => {
-// 		expect(hoursToMinutes(movies)).not.toEqual(movies);
-// 	});
+	it('should return a new array, not update the original one', () => {
+		expect(hoursToMinutes(movies)).not.toEqual(movies);
+	});
 
-// 	it('should return an array of movies with duration as a number', () => {
-// 		expect(typeof hoursToMinutes(movies)[0].duration).toBe('number');
-// 	});
+	it('should return an array of movies with duration as a number', () => {
+		expect(typeof hoursToMinutes(movies)[0].duration).toBe('number');
+	});
 
-// 	it('should return an array of movies with the correct duration for a 31 minute movie', () => {
-// 		const movieTry = [{ duration: '0h 31min' }];
-// 		expect(hoursToMinutes(movieTry)[0].duration).toBe(31);
-// 	});
+	it('should return an array of movies with the correct duration for a 8 minute movie', () => {
+		const movieTry: Movie[] = [
+			{
+				title: 'Dead Poets Society',
+				year: 1989,
+				director: 'Peter Weir',
+				duration: '0h 8min',
+				genre: ['Comedy', 'Drama'],
+				score: 8
+			}
+		];
+		expect(hoursToMinutes(movieTry)[0].duration).toBe(8);
+	});
 
-// 	it('should return an array of movies with the correct duration for a 341 minute movie', () => {
-// 		const movieTry = [{ duration: '5h 41min' }];
-// 		expect(hoursToMinutes(movieTry)[0].duration).toBe(341);
-// 	});
+	it('should return an array of movies with the correct duration for a 120 minute movie', () => {
+		const movieTry: Movie[] = [
+			{
+				title: 'Dead Poets Society',
+				year: 1989,
+				director: 'Peter Weir',
+				duration: '2h 0min',
+				genre: ['Comedy', 'Drama'],
+				score: 8
+			}
+		];
+		expect(hoursToMinutes(movieTry)[0].duration).toBe(120);
+	});
 
-// 	it('should return an array of movies with the correct duration for a 2 hour movie', () => {
-// 		const movieTry = [{ duration: '2h' }];
-// 		expect(hoursToMinutes(movieTry)[0].duration).toBe(120);
-// 	});
-// });
+	it('should return an array of movies with the correct duration for a 128 hour movie', () => {
+		const movieTry: Movie[] = [
+			{
+				title: 'Dead Poets Society',
+				year: 1989,
+				director: 'Peter Weir',
+				duration: '2h 8min',
+				genre: ['Comedy', 'Drama'],
+				score: 8
+			}
+		];
+		expect(hoursToMinutes(movieTry)[0].duration).toBe(128);
+	});
+});
 
 // // Exercise 8
-// describe('Function "bestFilmOfYear"', () => {
-// 	it('should be declared', () => {
-// 		expect(typeof bestFilmOfYear).toBe('function');
-// 	});
+describe('Function "bestFilmOfYear"', () => {
+	it('should be declared', () => {
+		expect(typeof bestFilmOfYear).toBe('function');
+	});
 
-// 	it('should return an array', () => {
-// 		expect(bestFilmOfYear(movies, 1999) instanceof Array).toBe(true);
-// 	});
+	it('should return an array', () => {
+		expect(bestFilmOfYear(movies, 1999) instanceof Array).toBe(true);
+	});
 
-// 	it('should return a new array, not update the original one', () => {
-// 		expect(bestFilmOfYear(movies, 1999)).not.toEqual(movies);
-// 	});
+	it('should return a new array, not update the original one', () => {
+		expect(bestFilmOfYear(movies, 1999)).not.toEqual(movies);
+	});
 
-// 	it('should return the best film of a year, searching in an array', () => {
-// 		const testArr = [
-// 			{
-// 				title: 'Film1',
-// 				year: 1957,
-// 				director: 'Stanley Kubrick',
-// 				duration: '1h 28min',
-// 				genre: ['Drama', 'War'],
-// 				score: 6
-// 			},
-// 			{
-// 				title: 'Film2',
-// 				year: 1957,
-// 				director: 'Stanley Kubrick',
-// 				duration: '1h 28min',
-// 				genre: ['Drama', 'War'],
-// 				score: 8.4
-// 			},
-// 			{
-// 				title: 'Film3',
-// 				year: 1957,
-// 				director: 'Stanley Kubrick',
-// 				duration: '1h 28min',
-// 				genre: ['Drama', 'War'],
-// 				score: 5
-// 			}
-// 		];
-// 		expect(bestFilmOfYear(testArr, 1957)).toEqual([
-// 			{
-// 				title: 'Film2',
-// 				year: 1957,
-// 				director: 'Stanley Kubrick',
-// 				duration: '1h 28min',
-// 				genre: ['Drama', 'War'],
-// 				score: 8.4
-// 			}
-// 		]);
-// 	});
-// });
+	it('should return the best film of a year, searching in an array', () => {
+		const testArr: Movie[] = [
+			{
+				title: 'Film1',
+				year: 1957,
+				director: 'Stanley Kubrick',
+				duration: '1h 28min',
+				genre: ['Drama', 'War'],
+				score: 6
+			},
+			{
+				title: 'Film2',
+				year: 1957,
+				director: 'Stanley Kubrick',
+				duration: '1h 28min',
+				genre: ['Drama', 'War'],
+				score: 8.4
+			},
+			{
+				title: 'Film3',
+				year: 1957,
+				director: 'Stanley Kubrick',
+				duration: '1h 28min',
+				genre: ['Drama', 'War'],
+				score: 5
+			}
+		];
+		expect(bestFilmOfYear(testArr, 1957)).toEqual([
+			{
+				title: 'Film2',
+				year: 1957,
+				director: 'Stanley Kubrick',
+				duration: '1h 28min',
+				genre: ['Drama', 'War'],
+				score: 8.4
+			}
+		]);
+	});
+});
