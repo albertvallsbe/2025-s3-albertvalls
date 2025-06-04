@@ -96,7 +96,48 @@ export const moviesAverageByCategory = (
 };
 
 // Exercise 7: Modify the duration of movies to minutes
-// const hoursToMinutes= () => {}
+export const hoursToMinutes = (array: Movie[]): Movie[] => {
+	let result: Movie[];
+
+	result = [...array].map((movie) => {
+		const durationInHours = movie.duration as string;
+		let durationInMinutes = 0;
+
+		const hours = durationInHours.match(/(\d+)h/);
+		if (hours) {
+			durationInMinutes += parseInt(hours[1], 10) * 60;
+		}
+
+		const minutes = durationInHours.match(/(\d+)min/);
+		if (minutes) {
+			durationInMinutes += parseInt(minutes[1], 10);
+		}
+
+		return {
+			...movie,
+			duration: durationInMinutes
+		};
+	});
+
+	return result;
+};
 
 // Exercise 8: Get the best film of a year
-// const bestFilmOfYear= () => {}
+export const bestFilmOfYear = (array: Movie[], year: number): Movie[] => {
+	if (!year) {
+		year = new Date().getFullYear();
+	}
+
+	let result: Movie = [...array]
+		.filter((list) => list.year === year)
+		.reduce(
+			(maxScore, current) => {
+				return (current.score ?? 0) > (maxScore.score ?? 0)
+					? current
+					: maxScore;
+			},
+			{ score: -Infinity } as Movie
+		);
+
+	return [result];
+};
