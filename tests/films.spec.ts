@@ -1,9 +1,9 @@
 import { Movie } from '../src/types';
 import movies from '../src/data';
 import {
-	getAllDirectors
-	// getMoviesFromDirector,
-	// moviesAverageOfDirector,
+	getAllDirectors,
+	getMoviesFromDirector,
+	moviesAverageOfDirector
 	// orderAlphabetically,
 	// orderByYear,
 	// moviesAverageByCategory,
@@ -52,103 +52,95 @@ describe('Function "getAllDirectors"', () => {
 });
 
 // // Exercise 2
-// describe('Function "getMoviesFromDirector"', () => {
-// 	it('should be declared', () => {
-// 		expect(typeof getMoviesFromDirector).toBe('function');
-// 	});
+describe('Function "getMoviesFromDirector"', () => {
+	it('should be declared', () => {
+		expect(typeof getMoviesFromDirector).toBe('function');
+	});
 
-// 	it('should return an array', () => {
-// 		expect(getMoviesFromDirector(movies) instanceof Array).toBe(true);
-// 	});
+	it('should return an array', () => {
+		expect(getMoviesFromDirector(movies) instanceof Array).toBe(true);
+	});
 
-// 	it('should return a new array, not update the original one', () => {
-// 		expect(getMoviesFromDirector(movies)).not.toEqual(movies);
-// 	});
+	it('should return a new array, not update the original one', () => {
+		expect(getMoviesFromDirector(movies)).not.toEqual(movies);
+	});
 
-// 	it('should return a new array with the movies from director', () => {
-// 		const testArr = [
-// 			{
-// 				title: 'Paths of Glory',
-// 				year: 1957,
-// 				director: 'Stanley Kubrick',
-// 				duration: '1h 28min',
-// 				genre: ['Drama', 'War'],
-// 				score: 8.4
-// 			},
-// 			{
-// 				title: 'Django Unchained',
-// 				year: 2012,
-// 				director: 'Quentin Tarantino',
-// 				duration: '2h 45min',
-// 				genre: ['Drama', 'Western'],
-// 				score: 8.4
-// 			}
-// 		];
-// 		expect(getMoviesFromDirector(testArr, 'Quentin Tarantino')).toEqual([
-// 			{
-// 				title: 'Django Unchained',
-// 				year: 2012,
-// 				director: 'Quentin Tarantino',
-// 				duration: '2h 45min',
-// 				genre: ['Drama', 'Western'],
-// 				score: 8.4
-// 			}
-// 		]);
-// 	});
-// });
+	it('should return a new array with the movies from director', () => {
+		const testArr: Movie[] = [
+			{
+				title: 'Paths of Glory',
+				year: 1957,
+				director: 'Stanley Kubrick',
+				duration: '1h 28min',
+				genre: ['Drama', 'War'],
+				score: 8.4
+			},
+			{
+				title: 'Django Unchained',
+				year: 2012,
+				director: 'Quentin Tarantino',
+				duration: '2h 45min',
+				genre: ['Drama', 'Western'],
+				score: 8.4
+			}
+		];
+		expect(getMoviesFromDirector(testArr, 'Quentin Tarantino')).toEqual([
+			{
+				title: 'Django Unchained',
+				year: 2012,
+				director: 'Quentin Tarantino',
+				duration: '2h 45min',
+				genre: ['Drama', 'Western'],
+				score: 8.4
+			}
+		]);
+	});
+});
 
 // // Exercise 3
-// describe('Function "moviesAverageOfDirector"', () => {
-// 	it('should be declared', () => {
-// 		expect(typeof moviesAverageOfDirector).toBe('function');
-// 	});
+describe('Function "moviesAverageOfDirector"', () => {
+	it('should be declared', () => {
+		expect(typeof moviesAverageOfDirector).toBe('function');
+	});
 
-// 	it('should return a number', () => {
-// 		expect(typeof moviesAverageOfDirector(movies, 'Stanley Kubrick')).toBe(
-// 			'number'
-// 		);
-// 	});
+	it('should return a number', () => {
+		expect(typeof moviesAverageOfDirector(movies, 'Stanley Kubrick')).toBe(
+			'number'
+		);
+	});
 
-// 	it('should be different from NaN', () => {
-// 		expect(
-// 			moviesAverageOfDirector(movies, 'Stanley Kubrick')
-// 		).not.toBeNaN();
-// 	});
+	it('should be different from NaN', () => {
+		expect(
+			moviesAverageOfDirector(movies, 'Stanley Kubrick')
+		).not.toBeNaN();
+	});
 
-// 	it(' should return the average score of movies selecting only the director films. With 2 decimals! ', () => {
-// 		expect(
-// 			moviesAverageOfDirector(
-// 				[
-// 					{
-// 						title: 'Paths of Glory',
-// 						year: 1957,
-// 						director: 'Stanley Kubrick',
-// 						duration: '1h 28min',
-// 						genre: ['Drama', 'War'],
-// 						score: 8.4
-// 					},
-// 					{
-// 						title: 'Django Unchained',
-// 						year: 2012,
-// 						director: 'Quentin Tarantino',
-// 						duration: '2h 45min',
-// 						genre: ['Drama', 'Western'],
-// 						score: 8.4
-// 					},
-// 					{
-// 						title: 'Pulp Fiction',
-// 						year: 1994,
-// 						director: 'Quentin Tarantino',
-// 						duration: '2h 34min',
-// 						genre: ['Crime', 'Drama'],
-// 						score: 8.9
-// 					}
-// 				],
-// 				'Quentin Tarantino'
-// 			)
-// 		).toBe(8.65);
-// 	});
-// });
+	it(' should return the average score of movies selecting only the director films. With 2 decimals! ', () => {
+		expect(
+			moviesAverageOfDirector(
+				[
+					{
+						title: 'Django Unchained',
+						year: 2012,
+						director: 'Quentin Tarantino',
+						duration: '2h 45min',
+						genre: ['Drama', 'Western'],
+						score: 8.4
+					},
+					{
+						title: 'Pulp Fiction',
+						year: 1994,
+						director: 'Quentin Tarantino',
+						duration: '2h 34min',
+						genre: ['Crime', 'Drama'],
+						score: 8.9
+					}
+				],
+				'Quentin Tarantino'
+			)
+		).toBe(8.65);
+	});
+});
 
 // // Exercise 4
 // describe('Function "orderAlphabetically"', () => {
