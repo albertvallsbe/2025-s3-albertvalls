@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.moviesAverageOfDirector = exports.getMoviesFromDirector = exports.getAllDirectors = void 0;
+exports.orderAlphabetically = exports.moviesAverageOfDirector = exports.getMoviesFromDirector = exports.getAllDirectors = void 0;
 // Exercise 1: Get the array of all directors.
 const getAllDirectors = (array) => {
     let result = [];
@@ -29,7 +29,13 @@ const moviesAverageOfDirector = (array, director) => {
 };
 exports.moviesAverageOfDirector = moviesAverageOfDirector;
 // Exercise 4:  Alphabetic order by title
-// const orderAlphabetically= (array) => {}
+const orderAlphabetically = (array) => {
+    let result;
+    result = [...array].sort((a, b) => a.title.localeCompare(b.title, 'ca'));
+    console.log('EXERCISE 1 ->', result.slice(0, 20).map((m) => m.title));
+    return result.slice(0, 20).map((m) => m.title);
+};
+exports.orderAlphabetically = orderAlphabetically;
 // Exercise 5: Order by year, ascending
 // const orderByYear= () => {}
 // Exercise 6: Calculate the average of the movies in a category

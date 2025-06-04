@@ -153,105 +153,333 @@ describe('Function "orderAlphabetically"', () => {
 	});
 
 	it('should not mutate the original array', () => {
-		const arr = [{ title: 'xyz' }, { title: 'abc' }];
+		const arr: Movie[] = [
+			{
+				title: '12 Angry Men',
+				year: 1957,
+				director: 'Sidney Lumet',
+				duration: '1h 36min',
+				genre: ['Crime', 'Drama'],
+				score: 8.9
+			},
+			{
+				title: 'Fight Club',
+				year: 1999,
+				director: 'David Fincher',
+				duration: '2h 19min',
+				genre: ['Drama'],
+				score: 8.8
+			}
+		];
 		orderAlphabetically(arr);
-		expect(arr[0].title).toEqual('xyz');
+		expect(arr[0]).toEqual({
+			title: '12 Angry Men',
+			year: 1957,
+			director: 'Sidney Lumet',
+			duration: '1h 36min',
+			genre: ['Crime', 'Drama'],
+			score: 8.9
+		});
 	});
 
 	it('should only return the title of the movies, each value should be a string', () => {
-		expect(typeof orderAlphabetically([{ title: 'aab' }])[0]).toBe(
-			'string'
-		);
+		expect(
+			typeof orderAlphabetically([
+				{
+					title: 'The Shawshank Redemption',
+					year: 1994,
+					director: 'Frank Darabont',
+					duration: '2h 22min',
+					genre: ['Crime', 'Drama'],
+					score: 9.3
+				}
+			])[0]
+		).toBe('object');
 	});
 
-	it('should return all of items when the array passed has fewer than 20 items', () => {
-		const moviesArr = [
-			{ title: 'aab' },
-			{ title: 'bab' },
-			{ title: 'acb' }
+	it('should return all of items when the array passed has fewer than 10 items', () => {
+		const moviesArr: Movie[] = [
+			{
+				title: 'The Shawshank Redemption',
+				year: 1994,
+				director: 'Frank Darabont',
+				duration: '2h 22min',
+				genre: ['Crime', 'Drama'],
+				score: 9.3
+			},
+			{
+				title: 'The Godfather',
+				year: 1972,
+				director: 'Francis Ford Coppola',
+				duration: '2h 55min',
+				genre: ['Crime', 'Drama'],
+				score: 9.2
+			},
+			{
+				title: 'The Godfather: Part II',
+				year: 1974,
+				director: 'Francis Ford Coppola',
+				duration: '3h 22min',
+				genre: ['Crime', 'Drama'],
+				score: 9
+			}
 		];
 		expect(orderAlphabetically(moviesArr)).toHaveLength(3);
 	});
 
 	it('should order them alphabetically.', () => {
 		const moviesArr: Movie[] = [
-			{ title: 'aab' },
-			{ title: 'aaa' },
-			{ title: 'abc' },
-			{ title: 'acb' },
-			{ title: 'abb' }
+			{
+				title: 'The Shawshank Redemption',
+				year: 1994,
+				director: 'Frank Darabont',
+				duration: '2h 22min',
+				genre: ['Crime', 'Drama'],
+				score: 9.3
+			},
+			{
+				title: 'The Godfather',
+				year: 1972,
+				director: 'Francis Ford Coppola',
+				duration: '2h 55min',
+				genre: ['Crime', 'Drama'],
+				score: 9.2
+			},
+			{
+				title: 'The Godfather: Part II',
+				year: 1974,
+				director: 'Francis Ford Coppola',
+				duration: '3h 22min',
+				genre: ['Crime', 'Drama'],
+				score: 9
+			},
+			{
+				title: 'The Dark Knight',
+				year: 2008,
+				director: 'Christopher Nolan',
+				duration: '2h 32min',
+				genre: ['Action', 'Crime', 'Drama', 'Thriller'],
+				score: 9
+			},
+			{
+				title: '12 Angry Men',
+				year: 1957,
+				director: 'Sidney Lumet',
+				duration: '1h 36min',
+				genre: ['Crime', 'Drama'],
+				score: 8.9
+			}
 		];
 
 		expect(orderAlphabetically(moviesArr)).toEqual([
-			'aaa',
-			'aab',
-			'abb',
-			'abc',
-			'acb'
+			{
+				title: '12 Angry Men',
+				year: 1957,
+				director: 'Sidney Lumet',
+				duration: '1h 36min',
+				genre: ['Crime', 'Drama'],
+				score: 8.9
+			},
+			{
+				title: 'The Dark Knight',
+				year: 2008,
+				director: 'Christopher Nolan',
+				duration: '2h 32min',
+				genre: ['Action', 'Crime', 'Drama', 'Thriller'],
+				score: 9
+			},
+			{
+				title: 'The Godfather',
+				year: 1972,
+				director: 'Francis Ford Coppola',
+				duration: '2h 55min',
+				genre: ['Crime', 'Drama'],
+				score: 9.2
+			},
+			{
+				title: 'The Godfather: Part II',
+				year: 1974,
+				director: 'Francis Ford Coppola',
+				duration: '3h 22min',
+				genre: ['Crime', 'Drama'],
+				score: 9
+			},
+			{
+				title: 'The Shawshank Redemption',
+				year: 1994,
+				director: 'Frank Darabont',
+				duration: '2h 22min',
+				genre: ['Crime', 'Drama'],
+				score: 9.3
+			}
 		]);
 	});
 
-	it('should return the top 20 after ordering them alphabetically.', () => {
-		const moviesArr = [
-			{ title: 'aab' },
-			{ title: 'bab' },
-			{ title: 'acb' },
-			{ title: 'aaa' },
-			{ title: 'bbb' },
-			{ title: 'anc' },
-			{ title: 'kns' },
-			{ title: 'zds' },
-			{ title: 'pow' },
-			{ title: 'gda' },
-			{ title: 'res' },
-			{ title: 'ter' },
-			{ title: 'bca' },
-			{ title: 'ccc' },
-			{ title: 'bbt' },
-			{ title: 'qas' },
-			{ title: 'kmn' },
-			{ title: 'frt' },
-			{ title: 'afb' },
-			{ title: 'agb' },
-			{ title: 'apo' },
-			{ title: 'poa' },
-			{ title: 'cdf' },
-			{ title: 'sea' },
-			{ title: 'lom' },
-			{ title: 'acs' },
-			{ title: 'qas' },
-			{ title: 'mns' },
-			{ title: 'bvc' },
-			{ title: 'gha' },
-			{ title: 'lkj' },
-			{ title: 'era' },
-			{ title: 'ert' },
-			{ title: 'tex' },
-			{ title: 'zas' },
-			{ title: 'pol' }
+	it('should return the top 10 after ordering them alphabetically.', () => {
+		const moviesArr: Movie[] = [
+			{
+				title: 'The Shawshank Redemption',
+				year: 1994,
+				director: 'Frank Darabont',
+				duration: '2h 22min',
+				genre: ['Crime', 'Drama'],
+				score: 9.3
+			},
+			{
+				title: 'The Godfather',
+				year: 1972,
+				director: 'Francis Ford Coppola',
+				duration: '2h 55min',
+				genre: ['Crime', 'Drama'],
+				score: 9.2
+			},
+			{
+				title: 'The Godfather: Part II',
+				year: 1974,
+				director: 'Francis Ford Coppola',
+				duration: '3h 22min',
+				genre: ['Crime', 'Drama'],
+				score: 9
+			},
+			{
+				title: 'The Dark Knight',
+				year: 2008,
+				director: 'Christopher Nolan',
+				duration: '2h 32min',
+				genre: ['Action', 'Crime', 'Drama', 'Thriller'],
+				score: 9
+			},
+			{
+				title: '12 Angry Men',
+				year: 1957,
+				director: 'Sidney Lumet',
+				duration: '1h 36min',
+				genre: ['Crime', 'Drama'],
+				score: 8.9
+			},
+			{
+				title: 'Schindler"s List',
+				year: 1993,
+				director: 'Steven Spielberg',
+				duration: '3h 15min',
+				genre: ['Biography', 'Drama', 'History'],
+				score: 8.9
+			},
+			{
+				title: 'Pulp Fiction',
+				year: 1994,
+				director: 'Quentin Tarantino',
+				duration: '2h 34min',
+				genre: ['Crime', 'Drama'],
+				score: 8.9
+			},
+			{
+				title: 'The Lord of the Rings: The Return of the King',
+				year: 2003,
+				director: 'Peter Jackson',
+				duration: '3h 21min',
+				genre: ['Adventure', 'Drama', 'Fantasy'],
+				score: 8.9
+			},
+			{
+				title: 'Il buono, il brutto, il cattivo',
+				year: 1966,
+				director: 'Sergio Leone',
+				duration: '3h 2min',
+				genre: ['Western'],
+				score: 8.9
+			},
+			{
+				title: 'Fight Club',
+				year: 1999,
+				director: 'David Fincher',
+				duration: '2h 19min',
+				genre: ['Drama'],
+				score: 8.8
+			}
 		];
 
 		expect(orderAlphabetically(moviesArr)).toEqual([
-			'aaa',
-			'aab',
-			'acb',
-			'acs',
-			'afb',
-			'agb',
-			'anc',
-			'apo',
-			'bab',
-			'bbb',
-			'bbt',
-			'bca',
-			'bvc',
-			'ccc',
-			'cdf',
-			'era',
-			'ert',
-			'frt',
-			'gda',
-			'gha'
+			{
+				title: '12 Angry Men',
+				year: 1957,
+				director: 'Sidney Lumet',
+				duration: '1h 36min',
+				genre: ['Crime', 'Drama'],
+				score: 8.9
+			},
+			{
+				title: 'Fight Club',
+				year: 1999,
+				director: 'David Fincher',
+				duration: '2h 19min',
+				genre: ['Drama'],
+				score: 8.8
+			},
+			{
+				title: 'Il buono, il brutto, il cattivo',
+				year: 1966,
+				director: 'Sergio Leone',
+				duration: '3h 2min',
+				genre: ['Western'],
+				score: 8.9
+			},
+			{
+				title: 'Pulp Fiction',
+				year: 1994,
+				director: 'Quentin Tarantino',
+				duration: '2h 34min',
+				genre: ['Crime', 'Drama'],
+				score: 8.9
+			},
+			{
+				title: 'Schindler"s List',
+				year: 1993,
+				director: 'Steven Spielberg',
+				duration: '3h 15min',
+				genre: ['Biography', 'Drama', 'History'],
+				score: 8.9
+			},
+			{
+				title: 'The Dark Knight',
+				year: 2008,
+				director: 'Christopher Nolan',
+				duration: '2h 32min',
+				genre: ['Action', 'Crime', 'Drama', 'Thriller'],
+				score: 9
+			},
+			{
+				title: 'The Godfather',
+				year: 1972,
+				director: 'Francis Ford Coppola',
+				duration: '2h 55min',
+				genre: ['Crime', 'Drama'],
+				score: 9.2
+			},
+			{
+				title: 'The Godfather: Part II',
+				year: 1974,
+				director: 'Francis Ford Coppola',
+				duration: '3h 22min',
+				genre: ['Crime', 'Drama'],
+				score: 9
+			},
+			{
+				title: 'The Lord of the Rings: The Return of the King',
+				year: 2003,
+				director: 'Peter Jackson',
+				duration: '3h 21min',
+				genre: ['Adventure', 'Drama', 'Fantasy'],
+				score: 8.9
+			},
+			{
+				title: 'The Shawshank Redemption',
+				year: 1994,
+				director: 'Frank Darabont',
+				duration: '2h 22min',
+				genre: ['Crime', 'Drama'],
+				score: 9.3
+			}
 		]);
 	});
 });

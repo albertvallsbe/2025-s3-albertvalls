@@ -6,7 +6,7 @@ export const getAllDirectors = (array: Movie[]): string[] => {
 
 	result = array.map((list) => list.director);
 
-	console.log('EXERCISE 1 ->', result);
+	// console.log('EXERCISE 1 ->', result);
 	return result;
 };
 
@@ -45,17 +45,13 @@ export const moviesAverageOfDirector = (
 };
 
 // Exercise 4:  Alphabetic order by title
-export const orderAlphabetically = (array: Movie[]): string[] => {
+export const orderAlphabetically = (array: Movie[]): Movie[] => {
 	let result: Movie[];
 
 	result = [...array].sort((a, b) => a.title.localeCompare(b.title, 'ca'));
 
-	console.log(
-		'EXERCISE 1 ->',
-		result.slice(0, 20).map((m) => m.title)
-	);
-
-	return result.slice(0, 20).map((m) => m.title);
+	return result.slice(0, 10);
+	// .map((m) => m.title)
 };
 
 // Exercise 5: Order by year, ascending
