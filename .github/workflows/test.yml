@@ -1,5 +1,8 @@
 name: Automated Testing
 on: push
+permissions:
+  contents: read # Permís bàsic per llegir el codi
+  checks: write
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -9,7 +12,7 @@ jobs:
       - name: Prepare environment
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '18'
           check-latest: true
       - name: Install dependencies
         run: npm i
