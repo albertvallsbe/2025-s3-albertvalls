@@ -4,9 +4,9 @@ import {
 	getAllDirectors,
 	getMoviesFromDirector,
 	moviesAverageOfDirector,
-	orderAlphabetically
-	// orderByYear,
-	// moviesAverageByCategory,
+	orderAlphabetically,
+	orderByYear,
+	moviesAverageByCategory
 	// hoursToMinutes,
 	// bestFilmOfYear
 } from '../src/films';
@@ -485,52 +485,242 @@ describe('Function "orderAlphabetically"', () => {
 });
 
 // // Exercise 5
-// describe('Function "orderByYear"', () => {
-// 	it('should be declared', () => {
-// 		expect(typeof orderByYear).toBe('function');
-// 	});
+describe('Function "orderByYear"', () => {
+	it('should be declared', () => {
+		expect(typeof orderByYear).toBe('function');
+	});
 
-// 	it('should return an array', () => {
-// 		expect(typeof orderByYear(movies)).toBe('object');
-// 	});
+	it('should return an array', () => {
+		expect(typeof orderByYear(movies)).toBe('object');
+	});
 
-// 	it('should return a new array', () => {
-// 		const arr = [];
-// 		expect(orderByYear(arr)).not.toBe(arr);
-// 	});
+	it('should return a new array', () => {
+		const arr: Movie[] = [];
+		expect(orderByYear(arr)).not.toBe(arr);
+	});
 
-// 	it('should return the element in a single element array', () => {
-// 		expect(orderByYear([{ year: 1982 }])).toEqual([{ year: 1982 }]);
-// 	});
+	it('should return the element in a single element array', () => {
+		expect(
+			orderByYear([
+				{
+					title: 'Blade Runner',
+					year: 1982,
+					director: 'Ridley Scott',
+					duration: '1h 57min',
+					genre: ['Sci-Fi', 'Thriller'],
+					score: 8.2
+				}
+			])
+		).toEqual([
+			{
+				title: 'Blade Runner',
+				year: 1982,
+				director: 'Ridley Scott',
+				duration: '1h 57min',
+				genre: ['Sci-Fi', 'Thriller'],
+				score: 8.2
+			}
+		]);
+	});
 
-// 	it('should return the new array in ascending order', () => {
-// 		expect(
-// 			orderByYear([{ year: 2002 }, { year: 1982 }, { year: 1995 }])
-// 		).toEqual([{ year: 1982 }, { year: 1995 }, { year: 2002 }]);
-// 	});
+	it('should return the new array in ascending order', () => {
+		expect(
+			orderByYear([
+				{
+					title: 'Lock, Stock and Two Smoking Barrels',
+					year: 1998,
+					director: 'Guy Ritchie',
+					duration: '1h 47min',
+					genre: ['Comedy', 'Crime'],
+					score: 8.2
+				},
+				{
+					title: 'Mr. Smith Goes to Washington',
+					year: 1939,
+					director: 'Frank Capra',
+					duration: '2h 9min',
+					genre: ['Comedy', 'Drama'],
+					score: 8.2
+				},
+				{
+					title: 'Blade Runner',
+					year: 1982,
+					director: 'Ridley Scott',
+					duration: '1h 57min',
+					genre: ['Sci-Fi', 'Thriller'],
+					score: 8.2
+				}
+			])
+		).toEqual([
+			{
+				title: 'Mr. Smith Goes to Washington',
+				year: 1939,
+				director: 'Frank Capra',
+				duration: '2h 9min',
+				genre: ['Comedy', 'Drama'],
+				score: 8.2
+			},
+			{
+				title: 'Blade Runner',
+				year: 1982,
+				director: 'Ridley Scott',
+				duration: '1h 57min',
+				genre: ['Sci-Fi', 'Thriller'],
+				score: 8.2
+			},
+			{
+				title: 'Lock, Stock and Two Smoking Barrels',
+				year: 1998,
+				director: 'Guy Ritchie',
+				duration: '1h 47min',
+				genre: ['Comedy', 'Crime'],
+				score: 8.2
+			}
+		]);
+	});
 
-// 	it('should order movies with the same year by their title, alphabetically', () => {
-// 		expect(
-// 			orderByYear([
-// 				{ title: 'abc', year: 2002 },
-// 				{ title: 'bac', year: 1982 },
-// 				{ title: 'aab', year: 1982 }
-// 			])
-// 		).toEqual([
-// 			{ title: 'aab', year: 1982 },
-// 			{ title: 'bac', year: 1982 },
-// 			{ title: 'abc', year: 2002 }
-// 		]);
-// 	});
-// });
+	it('should order movies with the same year by their title, alphabetically', () => {
+		expect(
+			orderByYear([
+				{
+					title: 'Lock, Stock and Two Smoking Barrels',
+					year: 1998,
+					director: 'Guy Ritchie',
+					duration: '1h 47min',
+					genre: ['Comedy', 'Crime'],
+					score: 8.2
+				},
+				{
+					title: 'Mr. Smith Goes to Washington',
+					year: 1939,
+					director: 'Frank Capra',
+					duration: '2h 9min',
+					genre: ['Comedy', 'Drama'],
+					score: 8.2
+				},
+				{
+					title: 'Blade Runner',
+					year: 1982,
+					director: 'Ridley Scott',
+					duration: '1h 57min',
+					genre: ['Sci-Fi', 'Thriller'],
+					score: 8.2
+				}
+			])
+		).toEqual([
+			{
+				title: 'Mr. Smith Goes to Washington',
+				year: 1939,
+				director: 'Frank Capra',
+				duration: '2h 9min',
+				genre: ['Comedy', 'Drama'],
+				score: 8.2
+			},
+			{
+				title: 'Blade Runner',
+				year: 1982,
+				director: 'Ridley Scott',
+				duration: '1h 57min',
+				genre: ['Sci-Fi', 'Thriller'],
+				score: 8.2
+			},
+			{
+				title: 'Lock, Stock and Two Smoking Barrels',
+				year: 1998,
+				director: 'Guy Ritchie',
+				duration: '1h 47min',
+				genre: ['Comedy', 'Crime'],
+				score: 8.2
+			}
+		]);
+	});
+});
 
 // // Exercise 6
 // // YOUR CODE HERE. Test moviesAverageByCategory()
-// describe('Function "moviesAverageByCategory"', () => {
-// 	it('ADD YOUR CODE IN films.spec.js file', () => {
-// 		expect(typeof hoursToMinutes).toBe('coffee');
-// 	});
-// });
+describe('Function "moviesAverageByCategory"', () => {
+	it('should be declared', () => {
+		expect(typeof moviesAverageByCategory).toBe('function');
+	});
+
+	it('should return a number', () => {
+		expect(typeof moviesAverageByCategory(movies, 'History')).toBe(
+			'number'
+		);
+	});
+
+	it('should be different from NaN', () => {
+		expect(moviesAverageByCategory(movies, 'History')).not.toBeNaN();
+	});
+
+	it('should return a new array', () => {
+		const arr: Movie[] = [];
+		expect(moviesAverageByCategory(arr)).not.toBe(arr);
+	});
+
+	it('should return the average score of movies selecting only the gender films. With 2 decimals! ', () => {
+		expect(
+			moviesAverageByCategory(
+				[
+					{
+						title: 'Hacksaw Ridge',
+						year: 2016,
+						director: 'Mel Gibson',
+						duration: '2h 19min',
+						genre: ['Biography', 'Drama', 'History', 'War'],
+						score: 8.2
+					},
+					{
+						title: 'Rang De Basanti',
+						year: 2006,
+						director: 'Rakeysh Omprakash Mehra',
+						duration: '2h 37min',
+						genre: ['Comedy', 'Drama', 'History', 'Romance'],
+						score: 8.3
+					}
+				],
+				'History'
+			)
+		).toBe(8.25);
+	});
+
+	it('should return the average score of all movies if no genre send as a second parameter. With 2 decimals! ', () => {
+		expect(
+			moviesAverageByCategory([
+				{
+					title: 'Hacksaw Ridge',
+					year: 2016,
+					director: 'Mel Gibson',
+					duration: '2h 19min',
+					genre: ['Biography', 'Drama', 'History', 'War'],
+					score: 8.2
+				},
+				{
+					title: 'Rang De Basanti',
+					year: 2006,
+					director: 'Rakeysh Omprakash Mehra',
+					duration: '2h 37min',
+					genre: ['Comedy', 'Drama', 'History', 'Romance'],
+					score: 8.3
+				},
+				{
+					title: 'How to Train Your Dragon',
+					year: 2010,
+					director: 'Dean DeBlois',
+					duration: '1h 38min',
+					genre: [
+						'Animation',
+						'Adventure',
+						'Comedy',
+						'Family',
+						'Fantasy'
+					],
+					score: 8.1
+				}
+			])
+		).toBe(8.2);
+	});
+});
 
 // // Exercise 7
 // describe('Function "hoursToMinutes"', () => {

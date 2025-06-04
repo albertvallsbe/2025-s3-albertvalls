@@ -55,10 +55,45 @@ export const orderAlphabetically = (array: Movie[]): Movie[] => {
 };
 
 // Exercise 5: Order by year, ascending
-// const orderByYear= () => {}
+export const orderByYear = (array: Movie[]): Movie[] => {
+	let result: Movie[];
+
+	result = [...array].sort((a, b) => a.year - b.year);
+
+	return result;
+};
 
 // Exercise 6: Calculate the average of the movies in a category
-// const moviesAverageByCategory= () => {}
+export const moviesAverageByCategory = (
+	array: Movie[],
+	genre?: string
+): number => {
+	if (array.length === 0) {
+		return 0;
+	}
+
+	let initialValue: number = 0;
+	let counter: number = 0;
+
+	let result: number = array.reduce((accumulator, array) => {
+		if (!genre) {
+			counter++;
+			return accumulator + (array.score ?? 0);
+		}
+
+		if (array.genre.includes(genre)) {
+			counter++;
+			return accumulator + (array.score ?? 0);
+		}
+		return accumulator;
+	}, initialValue);
+
+	if (counter === 0) {
+		return 0;
+	}
+
+	return parseFloat((result / counter).toFixed(2));
+};
 
 // Exercise 7: Modify the duration of movies to minutes
 // const hoursToMinutes= () => {}
