@@ -1,86 +1,112 @@
-# Sprint 3 IT Academy | Video management tool
+# 🎓 2025-S2.1 Pràctica Acadèmica / 2025-S2.1 Academic Practice
 
-## Introduction
+Albert Valls
 
-A company in the audiovisual sector has asked us for a web application that will allow their employees to quickly find movies from a large database they have, since the process is currently done manually.
+---
 
-You will be in charge of setting up the core of the application: all the logic of filtering and sorting of movies. You have 2 weeks to finish, which is how long this sprint lasts.
+## 📚 Índex / Table of Contents
 
-<br>
+1. [Sobre el projecte / About](#1-sobre-el-projecte--about)
+2. [Funcionalitats / Features](#2-funcionalitats--features)
+3. [Tecnologia / Tech Stack](#3-tecnologia--tech-stack)
+4. [Demo en línia / Live Demo](#4-demo-en-línia--live-demo)
+5. [Repositori / Repository](#5-repositori--repository)
+6. [Instal·lació / Installation](#6-instal·lació--installation)
 
-## Requirements
+---
 
+## 1. Sobre el projecte / About
 
-1. Clone this repo
+**CAT:**  
+Aquest projecte és una pràctica acadèmica senzilla basada en JavaScript, però escrita amb TypeScript. El codi TypeScript es compila i s’actualitza en temps real. A més, aquest projecte incorpora una suite de test, per verificar el codi.
+
+**EN:**  
+This project is a simple academic exercise built JavaScript, but authored in TypeScript. The TypeScript code is compiled and automatically rebuilt. In addition, this project includes a test suite to verify the code.
+
+---
+
+## 2. Funcionalitats / Features
+
+- ✅ **TypeScript → JavaScript**
+- ✅ **Jest**
+
+---
+
+## 3. Tecnologia / Tech Stack
+
+- **JavaScript (ES6+)**
+- **TypeScript**
+- **Git & GitHub**
+- **Node.js**
+- **Jest**
+- **Node.js**
+
+---
+
+## 4. Demo en línia / Live Demo
+
+**Live:** 👉
+
+**CAT:**  
+Aquest repositori no disposa de vista live, ja que només conté scripts sense interfície gràfica
+
+**EN:**  
+This repository does not include a live view, as it only contains scripts without a graphical interface.
+
+---
+
+## 5. Repositori / Repository
+
+**Github:** 👉 https://github.com/albertvallsbe/2025-s3-albertvalls
+
+## 6. Instal·lació / Installation
+
+**CAT:**
+
+_Segueix aquests passos per clonar el projecte i fer servir el compilador TypeScript en mode “watch” i executa els test amb Jest._
+
+**EN:**
+
+_Follow these steps to clone the project and run the TypeScript compiler in watch mode and run the test with Jest._
+
+**Requeriments / Prerequisites**
+
+- Node.js
+
+### 1) Clonar el repositori / Clone the repository
+
 ```bash
-$ git clone https://github.com/IT-Academy-BCN/starter-code-frontend-sprint-3-movies
+git clone https://github.com/albertvallsbe/2025-s3-albertvalls.git
 ```
 
-2. Unlink your repo from the itacademy repository
-```bash
-$ git remote rm origin
+### 2) Entrar al directori del projecte / Navigate into the project directory
+
+```
+cd 2025-s3-albertvalls
 ```
 
-3. Link your repo to the repository you have to create in your github account
-```bash
-$ git remote add origin <your repo name!>
+### 3) Instal·lar dependències / Install dependencies
+
+```
+npm i
 ```
 
-<br>
+### 4) Executar el compilador TypeScript en watch mode / Run TypeScript compiler in watch mode
 
-## Submission
-
-1. Upon completion, run the following commands:
-
-```bash
-$ git add .
-$ git commit -m "Sprint Solution"
-$ git push origin master
+```
+npm run ts-w
 ```
 
-2. Create Pull Request.
+or:
 
-3. Upload the link to the virtual campus so that your mentor can correct it and give you feedback.
-
-
-
-<br>
-
-## Introduction
-
-The statement of the exercise is available on the virtual campus.
-
-<br>
-
-## Tests!
-
-
-```shell
-$ npm install
-$ npm run test:watch
+```
+npx tsc --watch
 ```
 
-And last, open the generated `test-results.html` file with the "Live Server" VSCode extension to see test results.
+### 5) Obre el live Server de VSCode / Open the Live Server of VSCode
 
-Apart from the statement, you will know exactly what you are asked to do by looking at the file `tests/films.spec.js`, all tests are already defined here!
+### 6) Executar els test / Run the test
 
-<br>
-
-## Instructions
-
-You have the following indications from the frontend responsible:
-
-- It is mandatory to implement all loops in ES6 (using map, reduce, filter and sort to manipulate arrays).
-
-- As at the moment we don't consume data from a server using an API, we will work with data from the src/data.js archive. For the moment we will implement the logic using
-an array of information about 250 movies.
-
-- The implementation is about processing this array of movies, to display it as requested in each exercise.
-
-- The logic to implement will be placed in the src/films.js file.
-
-- You don't need to show the result of each function on the screen. Your goal is to pass the tests.  More information on how to program oriented to pass tests at the end of the document.
-
-- Don't forget to include the capture of the test results in the virtual campus.
-
-
+```
+npm run test
+```
