@@ -139,5 +139,5 @@ export const bestFilmOfYear = (array: Movie[], year: number): Movie[] => {
 			{ score: -Infinity } as Movie
 		);
 
-	return [result];
+	return Array.of(result);
 };
