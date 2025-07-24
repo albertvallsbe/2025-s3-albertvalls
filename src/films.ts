@@ -56,9 +56,7 @@ export const orderAlphabetically = (array: Movie[]): Movie[] => {
 
 // Exercise 5: Order by year, ascending
 export const orderByYear = (array: Movie[]): Movie[] => {
-	let result: Movie[];
-
-	result = [...array].sort((a, b) => a.year - b.year);
+	const result: Movie[] = [...array].sort((a, b) => a.year - b.year);
 
 	return result;
 };

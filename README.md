@@ -1,4 +1,4 @@
-# 🎓 2025-S2.1 Pràctica Acadèmica / 2025-S2.1 Academic Practice
+# 🎓 2025-S3 Pràctica Acadèmica / 2025-S3 Academic Practice
 
 Albert Valls
 
